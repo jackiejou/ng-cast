@@ -5,14 +5,10 @@ angular.module('video-player')
       callback: '<'
     },
     controller: function(youTube) {
-      // debugger;
-      // console.log('youTube:', youTube);
-      // console.log('search controller this', JSON.stringify(this));
-      console.log('render search');
-      // youTube.search(this.options);
       this.searchString = '';
       this.clickHandler = () => {
         this.options = {
+          url: 'https://www.googleapis.com/youtube/v3/search',
           key: window.YOUTUBE_API_KEY,
           max: 5,
           query: this.searchString
@@ -20,6 +16,18 @@ angular.module('video-player')
         youTube.search(this.options, this.callback);
         this.searchString = '';
       };
+      this.keyupHandler = _.debounce((event) => {
+        this.options = {
+          url: 'https://www.googleapis.com/youtube/v3/search',
+          key: window.YOUTUBE_API_KEY,
+          max: 5,
+          query: this.searchString
+        };
+        youTube.search(this.options, this.callback);
+        if (event.keyCode === 13) {
+          this.searchString = '';
+        }
+      }, 500);
     },
     templateUrl: 'src/templates/search.html'
   });
