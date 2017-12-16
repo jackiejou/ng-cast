@@ -3,5 +3,9 @@ angular.module('video-player')
     bindings: {
       video: '<'
     },
+    controller: function() {
+      // debugger;
+      console.log('videoPlayer this', JSON.stringify(this));
+    },
     templateUrl: 'src/templates/videoPlayer.html'
   });
