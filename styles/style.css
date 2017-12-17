@@ -89,3 +89,30 @@ h5 {
   text-align: center;
   padding: 10px;
 }
+
+#likes {
+  color: green;
+  float: right;
+}
+#dislikes {
+  margin-left: 10px;
+  color: red;
+  float: right;
+}
+#views {
+  color: grey;
+  margin-bottom: 20px;
+}
+#channel {
+  border-radius: 10%;
+  border: 1px black solid;
+  width: 70px;
+  height: 70px;
+}
+#channelname {
+  vertical-align: bottom;
+  margin-left: 5px;
+}
+#description {
+  margin-top: 20px;
+}

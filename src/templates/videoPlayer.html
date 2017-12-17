@@ -1,10 +1,23 @@
 <div class="video-player">
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" ng-if="$ctrl.video.id.videoId" ng-src={{"https://www.youtube.com/embed/"+$ctrl.video.id.videoId}} allowFullScreen></iframe>
+    <iframe class="embed-responsive-item" ng-if="$ctrl.result.id" ng-src={{"https://www.youtube.com/embed/"+$ctrl.result.id}} allowFullScreen></iframe>
     <p ng-if="!$ctrl.video.id.videoId">Please wait</p>
   </div>
   <div class="video-player-details">
-    <h3>{{$ctrl.video.snippet.title}}</h3>
-    <div>{{$ctrl.video.snippet.description}}</div>
+    <h3>{{$ctrl.result.snippet.title}}</h3>
+    <span class="video-detail-bar" id="dislikes">
+       {{ $ctrl.result.statistics.dislikeCount | number:0 }} dislikes
+    </span>
+    <span class="video-detail-bar" id="likes">
+      {{ $ctrl.result.statistics.likeCount | number:0 }} likes
+    </span>
+    <div class="video-detail-bar" id="views">
+       {{ $ctrl.result.statistics.viewCount | number:0 }} views
+    </div>
+    <span>
+      <img id='channel' ng-src={{$ctrl.channelResult.snippet.thumbnails.default.url}} />
+    </span>
+    <span id='channelname'>{{$ctrl.channelResult.snippet.title}}</span>
+    <div id="description">{{$ctrl.result.snippet.description}}</div>
   </div>
 </div>
